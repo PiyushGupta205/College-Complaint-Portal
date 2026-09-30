@@ -1,0 +1,23 @@
+# Build/generated files
+build/
+target/
+*.class
+
+# IDE files
+.classpath
+.project
+.settings/
+.vscode/
+
+# Backup/temporary files
+*.before-*
+*.backup-*
+BEFORE_SMALL_CODE_CLEANUP_*/
+
+# Logs/debug
+*.log
+java-compile-error.txt
+
+# OS files
+.DS_Store
+Thumbs.db

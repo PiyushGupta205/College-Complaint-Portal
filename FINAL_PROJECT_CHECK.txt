@@ -1,0 +1,27 @@
+﻿COLLEGE COMPLAINT PORTAL
+FINAL PROJECT CHECK REPORT
+Generated: 09/26/2026 13:33:43
+
+Project Path:
+C:\Users\piyus\OneDrive\Pictures\Documents\Documents\CollegeComplaintPortal
+
+UI CSS:
+34238 bytes
+
+Active JSP Pages:
+admin-complaints.jsp, admin-dashboard.jsp, faculty-complaints.jsp, faculty-dashboard.jsp, index.jsp, login.jsp, my-complaints.jsp, register.jsp, student-dashboard.jsp, submit-complaint.jsp
+
+Java Source Files:
+15
+
+Database SQL:
+database\complaint_portal_final.sql
+
+Documentation:
+README_FINAL.txt
+
+Core workflow:
+Student -> Complaint -> Admin Assignment -> Faculty Update -> Student Tracking
+
+Status:
+CORE APPLICATION ALREADY TESTED AS WORKING.
