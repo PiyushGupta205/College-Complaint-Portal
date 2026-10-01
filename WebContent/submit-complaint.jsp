@@ -1,4 +1,4 @@
-﻿<%@ page contentType="text/html;charset=UTF-8" trimDirectiveWhitespaces="true" %>
+<%@ page contentType="text/html;charset=UTF-8" trimDirectiveWhitespaces="true" %>
 <%
     if (session.getAttribute("userId") == null || !"student".equals(session.getAttribute("role"))) {
         response.sendRedirect("login.jsp");
@@ -24,7 +24,7 @@
     <aside class="sidebar">
 
         <div class="sidebar-brand">
-            <div class="sidebar-logo">CC</div>
+            <div class="sidebar-logo"><img src="images/college-logo.svg" alt="College Complaint Portal"></div>
 
             <div class="sidebar-brand-text">
                 <strong>Complaint Portal</strong>

@@ -1,4 +1,4 @@
-﻿<%@ page contentType="text/html;charset=UTF-8" trimDirectiveWhitespaces="true" %>
+<%@ page contentType="text/html;charset=UTF-8" trimDirectiveWhitespaces="true" %>
 <%@ page import="java.util.List" %>
 <%@ page import="com.complaintportal.model.Complaint" %>
 <%@ page import="com.complaintportal.model.User" %>
@@ -26,7 +26,7 @@
 <div class="app-layout">
     <aside class="sidebar">
         <div class="sidebar-brand">
-            <div class="sidebar-logo">CC</div>
+            <div class="sidebar-logo"><img src="images/college-logo.svg" alt="College Complaint Portal"></div>
             <div class="sidebar-brand-text"><strong>Complaint Portal</strong><span>Administrator Panel</span></div>
         </div>
         <div class="sidebar-section">Management</div>

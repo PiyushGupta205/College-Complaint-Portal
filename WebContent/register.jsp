@@ -1,4 +1,4 @@
-﻿<%@ page contentType="text/html;charset=UTF-8" trimDirectiveWhitespaces="true" %>
+<%@ page contentType="text/html;charset=UTF-8" trimDirectiveWhitespaces="true" %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -24,9 +24,7 @@
 
         <div class="auth-brand">
 
-            <div class="logo-badge">
-                CC
-            </div>
+            <div class="logo-badge"><img src="images/college-logo.svg" alt="College Complaint Portal"></div>
 
             <h1>
                 College Complaint Portal

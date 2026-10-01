@@ -1,4 +1,4 @@
-﻿<%@ page contentType="text/html;charset=UTF-8" trimDirectiveWhitespaces="true" %>
+<%@ page contentType="text/html;charset=UTF-8" trimDirectiveWhitespaces="true" %>
 <%
     String role = (String) session.getAttribute("role");
 
@@ -32,7 +32,7 @@
 
     <nav class="home-nav">
         <div class="home-brand">
-            <div class="home-logo">CC</div>
+            <div class="home-logo"><img src="images/college-logo.svg" alt="College Complaint Portal"></div>
             <span>College Complaint Portal</span>
         </div>
 
@@ -166,3 +166,4 @@
 
 </body>
 </html>
+

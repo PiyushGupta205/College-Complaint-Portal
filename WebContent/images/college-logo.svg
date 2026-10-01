@@ -1,0 +1,39 @@
+﻿<svg xmlns="http://www.w3.org/2000/svg" width="70" height="70" viewBox="0 0 90 90">
+    <path d="M45 5 L78 17 L78 43 C78 63 64 77 45 85 C26 77 12 63 12 43 L12 17 Z"
+          fill="#1e3a5f"/>
+
+    <path d="M45 12 L70 21 L70 42 C70 57 60 68 45 75 C30 68 20 57 20 42 L20 21 Z"
+          fill="#ffffff"/>
+
+    <!-- Graduation cap -->
+    <path d="M27 32 L45 24 L63 32 L45 40 Z"
+          fill="#1e3a5f"/>
+
+    <path d="M33 35 L33 43 C39 47 51 47 57 43 L57 35"
+          fill="none"
+          stroke="#1e3a5f"
+          stroke-width="3"/>
+
+    <path d="M61 32 L61 42 L64 45"
+          fill="none"
+          stroke="#b45309"
+          stroke-width="2.5"
+          stroke-linecap="round"/>
+
+    <!-- Complaint document -->
+    <rect x="34" y="50" width="22" height="16" rx="2"
+          fill="#b45309"/>
+
+    <path d="M39 55 H51 M39 59 H48"
+          stroke="#ffffff"
+          stroke-width="2"
+          stroke-linecap="round"/>
+
+    <!-- Check -->
+    <path d="M40 63 L43 66 L50 59"
+          fill="none"
+          stroke="#ffffff"
+          stroke-width="2.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"/>
+</svg>

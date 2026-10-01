@@ -1,4 +1,4 @@
-﻿<%@ page contentType="text/html;charset=UTF-8" trimDirectiveWhitespaces="true" %>
+<%@ page contentType="text/html;charset=UTF-8" trimDirectiveWhitespaces="true" %>
 <%@ page import="com.complaintportal.dao.ComplaintDAO" %>
 <%@ page import="com.complaintportal.dao.UserDAO" %>
 
@@ -53,7 +53,7 @@
 
         <div class="sidebar-brand">
 
-            <div class="sidebar-logo">CC</div>
+            <div class="sidebar-logo"><img src="images/college-logo.svg" alt="College Complaint Portal"></div>
 
             <div class="sidebar-brand-text">
                 <strong>Complaint Portal</strong>

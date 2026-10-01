@@ -1147,3 +1147,117 @@ h1, h2, h3, .stat-number, .auth-visual-content h2, .auth-card h2 {
         grid-template-columns: 1fr !important;
     }
 }
+
+/* ===== College Logo ===== */
+.logo img {
+    width: 48px;
+    height: 48px;
+    object-fit: contain;
+    display: block;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* ===== College Logo Replacement ===== */
+.home-logo {
+    width: 48px !important;
+    height: 48px !important;
+    background: transparent !important;
+    border: none !important;
+    border-radius: 0 !important;
+    padding: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    overflow: visible !important;
+}
+
+.home-logo img {
+    width: 48px !important;
+    height: 48px !important;
+    display: block !important;
+    object-fit: contain !important;
+}
+
+/* ===== FINAL COLLEGE LOGO - ALL PAGES ===== */
+
+.home-logo {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    background: transparent !important;
+    border: none !important;
+    padding: 0 !important;
+    overflow: visible !important;
+}
+
+.home-logo img {
+    width: 48px !important;
+    height: 48px !important;
+    object-fit: contain !important;
+    display: block !important;
+}
+
+.logo img {
+    width: 48px !important;
+    height: 48px !important;
+    object-fit: contain !important;
+    display: block !important;
+}
+
+/* ===== FINAL COLLEGE LOGO - ALL LOCATIONS ===== */
+
+.sidebar-logo {
+    background: transparent !important;
+    border: none !important;
+    padding: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    overflow: visible !important;
+}
+
+.sidebar-logo img {
+    width: 42px !important;
+    height: 42px !important;
+    object-fit: contain !important;
+    display: block !important;
+}
+
+.logo-badge {
+    background: transparent !important;
+    border: none !important;
+    padding: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    overflow: visible !important;
+}
+
+.logo-badge img {
+    width: 52px !important;
+    height: 52px !important;
+    object-fit: contain !important;
+    display: block !important;
+}
+
+.home-logo {
+    background: transparent !important;
+    border: none !important;
+    padding: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    overflow: visible !important;
+}
+
+.home-logo img {
+    width: 48px !important;
+    height: 48px !important;
+    object-fit: contain !important;
+    display: block !important;
+}
