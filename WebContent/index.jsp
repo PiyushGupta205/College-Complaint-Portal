@@ -1,4 +1,4 @@
-<%@ page contentType="text/html;charset=UTF-8" trimDirectiveWhitespaces="true" %>
+﻿<%@ page contentType="text/html;charset=UTF-8" trimDirectiveWhitespaces="true" %>
 <%
     String role = (String) session.getAttribute("role");
 
@@ -19,10 +19,14 @@
 %>
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>College Complaint Portal</title>
+
     <link rel="stylesheet" href="css/style.css">
 </head>
 
@@ -30,140 +34,196 @@
 
 <div class="home-page">
 
+    <!-- HEADER -->
     <nav class="home-nav">
+
         <div class="home-brand">
-            <div class="home-logo"><img src="images/college-logo.svg" alt="College Complaint Portal"></div>
+            <div class="home-logo">
+                <img src="images/college-logo.svg"
+                     alt="College Complaint Portal">
+            </div>
+
             <span>College Complaint Portal</span>
         </div>
 
         <div class="home-links">
-            <a href="#features">Features</a>
-            <a href="login.jsp" class="home-login">Login</a>
-            <a href="register.jsp" class="home-register">Register</a>
+            <a href="login.jsp" class="home-login">
+                Login
+            </a>
+
+            <a href="register.jsp" class="home-register">
+                Register
+            </a>
         </div>
+
     </nav>
 
-    <section class="home-hero">
 
-        <div class="home-hero-content">
+    <!-- MAIN HERO -->
+    <main class="professional-home">
 
-            <div class="home-badge">
-                College Complaint Management System
+        <section class="professional-copy">
+
+            <div class="professional-eyebrow">
+                COLLEGE COMPLAINT MANAGEMENT SYSTEM
             </div>
 
             <h1>
-                Your complaint<br>
-                <span>deserves a record.</span>
+                Report the issue.
+                <span>Follow the resolution.</span>
             </h1>
 
-            <p>
-                A simple and organized way for students to report
-                college-related problems, track their progress and
-                stay informed until the complaint is resolved.
+            <p class="professional-intro">
+                A centralized portal for recording college-related
+                complaints, assigning them to the appropriate faculty,
+                and tracking their progress until resolution.
             </p>
 
-            <div class="home-actions">
-                <a href="register.jsp" class="home-primary">
+
+            <div class="professional-actions">
+
+                <a href="register.jsp"
+                   class="professional-primary">
                     Create Student Account
+                    <span>→</span>
                 </a>
 
-                <a href="login.jsp" class="home-secondary">
+                <a href="login.jsp"
+                   class="professional-secondary">
                     Login to Portal
                 </a>
+
             </div>
 
-        </div>
 
-        <div class="portal-glance portal-glance-wrap">
-
-            <div class="portal-glance-header">
-                <span class="portal-glance-label">WHAT THIS PORTAL DOES</span>
-                <h2>One place for every complaint.</h2>
-                <p>
-                    The portal keeps complaint records organized and
-                    makes the resolution process easier to follow.
-                </p>
+            <div class="professional-note">
+                <span class="note-dot"></span>
+                One organized record from submission to resolution
             </div>
 
-            <div class="portal-glance-items">
+        </section>
 
-                <div class="portal-glance-item">
-                    <div class="portal-glance-icon">01</div>
-                    <div>
-                        <strong>Students</strong>
-                        <p>Submit complaints with complete details.</p>
-                    </div>
+
+        <!-- WORKFLOW PANEL -->
+        <section class="workflow-panel">
+
+            <div class="workflow-heading">
+
+                <div>
+                    <span class="workflow-label">
+                        COMPLAINT WORKFLOW
+                    </span>
+
+                    <h2>
+                        From submission<br>
+                        to resolution.
+                    </h2>
                 </div>
 
-                <div class="portal-glance-item">
-                    <div class="portal-glance-icon">02</div>
-                    <div>
-                        <strong>Faculty</strong>
-                        <p>Handle assigned complaints and update progress.</p>
-                    </div>
-                </div>
-
-                <div class="portal-glance-item">
-                    <div class="portal-glance-icon">03</div>
-                    <div>
-                        <strong>Administrator</strong>
-                        <p>Review complaints and assign them for handling.</p>
-                    </div>
-                </div>
-
-                <div class="portal-glance-item">
-                    <div class="portal-glance-icon">04</div>
-                    <div>
-                        <strong>Clear Status</strong>
-                        <p>Pending → In Progress → Resolved.</p>
-                    </div>
+                <div class="workflow-badge">
+                    04 STEPS
                 </div>
 
             </div>
 
-        </div>
 
-    </section>
+            <div class="workflow-list">
 
-    <section id="features" class="home-features">
+                <div class="workflow-item">
 
-        <div class="home-section-heading">
-            <span>WHY THIS PORTAL?</span>
-            <h2>From reporting a problem to tracking its resolution.</h2>
-        </div>
+                    <div class="workflow-number">
+                        01
+                    </div>
 
-        <div class="home-feature-grid">
+                    <div class="workflow-content">
+                        <h3>Submit</h3>
 
-            <div class="home-feature-card">
-                <h3>Submit</h3>
-                <p>
-                    Students can report issues by providing the
-                    complaint title, category, location and description.
-                </p>
+                        <p>
+                            Student records the issue with
+                            category, location and description.
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <div class="workflow-item">
+
+                    <div class="workflow-number">
+                        02
+                    </div>
+
+                    <div class="workflow-content">
+                        <h3>Assign</h3>
+
+                        <p>
+                            Administrator reviews the complaint
+                            and assigns it to faculty.
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <div class="workflow-item">
+
+                    <div class="workflow-number">
+                        03
+                    </div>
+
+                    <div class="workflow-content">
+                        <h3>Update</h3>
+
+                        <p>
+                            Faculty reviews the issue, updates
+                            progress and adds remarks.
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <div class="workflow-item">
+
+                    <div class="workflow-number">
+                        04
+                    </div>
+
+                    <div class="workflow-content">
+                        <h3>Track</h3>
+
+                        <p>
+                            Student checks the complaint history
+                            and sees the latest status.
+                        </p>
+                    </div>
+
+                </div>
+
             </div>
 
-            <div class="home-feature-card">
-                <h3>Track</h3>
-                <p>
-                    Every complaint receives a unique complaint ID
-                    and can be checked through the student's complaint history.
-                </p>
+
+            <div class="workflow-footer">
+
+                <div class="workflow-status-label">
+                    CURRENT STATUS FLOW
+                </div>
+
+                <div class="workflow-status">
+                    <span>Pending</span>
+                    <b>→</b>
+                    <span>In Progress</span>
+                    <b>→</b>
+                    <span>Resolved</span>
+                </div>
+
             </div>
 
-            <div class="home-feature-card">
-                <h3>Resolve</h3>
-                <p>
-                    Complaints move through a clear workflow from
-                    Pending to In Progress and finally Resolved.
-                </p>
-            </div>
+        </section>
 
-        </div>
-
-    </section>
+    </main>
 
 </div>
 
 </body>
 </html>
-

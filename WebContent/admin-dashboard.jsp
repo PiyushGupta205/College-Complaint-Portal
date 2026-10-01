@@ -1,4 +1,4 @@
-<%@ page contentType="text/html;charset=UTF-8" trimDirectiveWhitespaces="true" %>
+﻿<%@ page contentType="text/html;charset=UTF-8" trimDirectiveWhitespaces="true" %>
 <%@ page import="com.complaintportal.dao.ComplaintDAO" %>
 <%@ page import="com.complaintportal.dao.UserDAO" %>
 
@@ -38,7 +38,7 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Admin Dashboard | College Complaint Portal</title>
+    <title>Complaint Administration | College Complaint Portal</title>
 
     <link rel="stylesheet" href="css/style.css">
 
@@ -100,7 +100,7 @@
         <header class="topbar">
 
             <div class="topbar-title">
-                <h1>Admin Dashboard</h1>
+                <h1>Complaint Administration</h1>
                 <p>College Complaint Portal</p>
             </div>
 
@@ -135,7 +135,7 @@
                 </div>
 
                 <a href="AdminComplaintsServlet" class="btn btn-primary">
-                    Manage Complaints
+                    Review & Assign Complaints
                 </a>
 
             </div>
@@ -162,7 +162,7 @@
                     <div class="role-stat-icon">&#9993;</div>
 
                     <div>
-                        <span>Total Students</span>
+                        <span>Registered Students</span>
                         <strong><%= totalStudents %></strong>
                         <small>Registered students</small>
                     </div>
@@ -175,7 +175,7 @@
                     <div class="role-stat-icon progress">&#8618;</div>
 
                     <div>
-                        <span>Total Faculty</span>
+                        <span>Available Faculty</span>
                         <strong><%= totalFaculty %></strong>
                         <small>Faculty members</small>
                     </div>
@@ -342,4 +342,5 @@
     </script>
 </body>
 </html>
+
 

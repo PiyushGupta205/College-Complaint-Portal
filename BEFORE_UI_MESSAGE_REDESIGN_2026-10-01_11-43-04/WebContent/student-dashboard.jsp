@@ -1,4 +1,4 @@
-﻿<%@ page contentType="text/html;charset=UTF-8" trimDirectiveWhitespaces="true" %>
+<%@ page contentType="text/html;charset=UTF-8" trimDirectiveWhitespaces="true" %>
 <%
     if (session.getAttribute("userId") == null || !"student".equals(session.getAttribute("role"))) {
         response.sendRedirect("login.jsp");
@@ -97,7 +97,7 @@
                 </div>
 
                 <a href="submit-complaint.jsp" class="btn btn-primary">
-                    + Report an Issue
+                    + Submit Complaint
                 </a>
 
             </div>
@@ -110,7 +110,7 @@
                     <div class="student-action-icon">&#10003;</div>
 
                     <div>
-                        <h2>Report an Issue</h2>
+                        <h2>Submit Complaint</h2>
                         <p>
                             Report an issue related to academics, hostel,
                             infrastructure, canteen or IT.
@@ -127,7 +127,7 @@
                     <div class="student-action-icon">&#10003;</div>
 
                     <div>
-                        <h2>My Complaint History</h2>
+                        <h2>My Complaints</h2>
                         <p>
                             View your submitted complaints, current status
                             and faculty remarks.
@@ -144,7 +144,7 @@
                     <div class="student-action-icon">&#10003;</div>
 
                     <div>
-                        <h2>Track Complaint Status</h2>
+                        <h2>Complaint Status</h2>
                         <p>
                             Complaints move through three stages:
                         </p>
@@ -251,9 +251,6 @@
     </script>
 </body>
 </html>
-
-
-
 
 
 

@@ -1,4 +1,4 @@
-﻿<%@ page contentType="text/html;charset=UTF-8" trimDirectiveWhitespaces="true" %>
+<%@ page contentType="text/html;charset=UTF-8" trimDirectiveWhitespaces="true" %>
 <%@ page import="com.complaintportal.dao.ComplaintDAO" %>
 <%@ page import="java.util.List" %>
 <%@ page import="com.complaintportal.model.Complaint" %>
@@ -22,7 +22,7 @@
     for (Complaint complaint : facultyComplaints) {
         if ("Pending".equals(complaint.getStatus())) {
             pendingCount++;
-        } else if ("Being Handled".equals(complaint.getStatus())) {
+        } else if ("In Progress".equals(complaint.getStatus())) {
             progressCount++;
         } else if ("Resolved".equals(complaint.getStatus())) {
             resolvedCount++;
@@ -40,7 +40,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Complaint Handling Dashboard | College Complaint Portal</title>
+    <title>Faculty Dashboard | College Complaint Portal</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 
@@ -70,7 +70,7 @@
 
             <a href="FacultyComplaintsServlet">
                 <span class="nav-icon">&#9638;</span>
-                Assigned to You
+                Assigned Complaints
             </a>
 
         </nav>
@@ -94,7 +94,7 @@
         <header class="topbar">
 
             <div class="topbar-title">
-                <h1>Complaint Handling Dashboard</h1>
+                <h1>Faculty Dashboard</h1>
                 <p>College Complaint Portal</p>
             </div>
 
@@ -126,7 +126,7 @@
                 </div>
 
                 <a href="FacultyComplaintsServlet" class="btn btn-primary">
-                    View Assigned to You
+                    View Assigned Complaints
                 </a>
 
             </div>
@@ -139,7 +139,7 @@
                     <div class="role-stat-icon">C</div>
 
                     <div>
-                        <span>Assigned to You</span>
+                        <span>Assigned Complaints</span>
                         <strong><%= totalAssigned %></strong>
                         <small>Complaints assigned to you</small>
                     </div>
@@ -165,7 +165,7 @@
                     <div class="role-stat-icon progress">></div>
 
                     <div>
-                        <span>Being Handled</span>
+                        <span>In Progress</span>
                         <strong><%= progressCount %></strong>
                         <small>Complaints being handled</small>
                     </div>
@@ -283,5 +283,4 @@
     </script>
 </body>
 </html>
-
 
