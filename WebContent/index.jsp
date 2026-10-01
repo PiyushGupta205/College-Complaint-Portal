@@ -1,4 +1,4 @@
-﻿<%@ page contentType="text/html;charset=UTF-8" trimDirectiveWhitespaces="true" %>
+<%@ page contentType="text/html;charset=UTF-8" trimDirectiveWhitespaces="true" %>
 <%
     String role = (String) session.getAttribute("role");
 

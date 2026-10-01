@@ -1,4 +1,4 @@
-﻿<%@ page contentType="text/html;charset=UTF-8" trimDirectiveWhitespaces="true" %>
+<%@ page contentType="text/html;charset=UTF-8" trimDirectiveWhitespaces="true" %>
 <%@ page import="com.complaintportal.dao.ComplaintDAO" %>
 <%@ page import="java.util.List" %>
 <%@ page import="com.complaintportal.model.Complaint" %>
@@ -22,7 +22,7 @@
     for (Complaint complaint : facultyComplaints) {
         if ("Pending".equals(complaint.getStatus())) {
             pendingCount++;
-        } else if ("Being Handled".equals(complaint.getStatus())) {
+        } else if ("In Progress".equals(complaint.getStatus())) {
             progressCount++;
         } else if ("Resolved".equals(complaint.getStatus())) {
             resolvedCount++;
@@ -165,7 +165,7 @@
                     <div class="role-stat-icon progress">></div>
 
                     <div>
-                        <span>Being Handled</span>
+                        <span>In Progress</span>
                         <strong><%= progressCount %></strong>
                         <small>Complaints being handled</small>
                     </div>

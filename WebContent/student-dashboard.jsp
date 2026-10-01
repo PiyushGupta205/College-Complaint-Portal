@@ -1,4 +1,4 @@
-﻿<%@ page contentType="text/html;charset=UTF-8" trimDirectiveWhitespaces="true" %>
+<%@ page contentType="text/html;charset=UTF-8" trimDirectiveWhitespaces="true" %>
 <%
     if (session.getAttribute("userId") == null || !"student".equals(session.getAttribute("role"))) {
         response.sendRedirect("login.jsp");
