@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" trimDirectiveWhitespaces="true" %>
+<%@ page import="com.complaintportal.util.HtmlUtil" %>
 <%@ page import="java.util.List" %>
 <%@ page import="com.complaintportal.model.Complaint" %>
 <%
@@ -63,10 +64,10 @@
                             <% for (Complaint complaint : complaints) { %>
                                 <tr>
                                     <td>#<%= complaint.getComplaintId() %></td>
-                                    <td><strong><%= complaint.getStudentName() %></strong><div style="color:#6b7280;font-size:11px;margin-top:2px;">Student ID: <%= complaint.getStudentId() %></div></td>
-                                    <td><strong><%= complaint.getTitle() %></strong><div style="color:#6b7280;font-size:12px;margin-top:3px;max-width:220px;"><%= complaint.getDescription() %></div></td>
-                                    <td><%= complaint.getCategoryName() %></td>
-                                    <td><%= complaint.getLocation() == null || complaint.getLocation().isEmpty() ? "&mdash;" : complaint.getLocation() %></td>
+                                    <td><strong><%= HtmlUtil.escapeHtml(complaint.getStudentName()) %></strong><div style="color:#6b7280;font-size:11px;margin-top:2px;">Student ID: <%= HtmlUtil.escapeHtml(String.valueOf(complaint.getStudentId())) %></div></td>
+                                    <td><strong><%= HtmlUtil.escapeHtml(complaint.getTitle()) %></strong><div style="color:#6b7280;font-size:12px;margin-top:3px;max-width:220px;"><%= HtmlUtil.escapeHtml(complaint.getDescription()) %></div></td>
+                                    <td><%= HtmlUtil.escapeHtml(complaint.getCategoryName()) %></td>
+                                    <td><%= complaint.getLocation() == null || complaint.getLocation().isEmpty() ? "&mdash;" : HtmlUtil.escapeHtml(complaint.getLocation()) %></td>
                                     <td>
                                         <% if ("Pending".equals(complaint.getStatus())) { %>
                                             <span class="status-badge status-pending">Pending</span>
@@ -80,7 +81,7 @@
                                     </td>
                                     <td><%= complaint.getCreatedAt() == null ? "&mdash;" : complaint.getCreatedAt() %></td>
                                     <td>
-                                        <button type="button" class="btn btn-primary" onclick="openUpdateForm(<%= complaint.getComplaintId() %>, '<%= complaint.getStatus() %>', '<%= complaint.getRemarks() == null ? "" : complaint.getRemarks().replace("'", "&#39;") %>')">Update</button>
+                                        <button type="button" class="btn btn-primary" onclick="openUpdateForm(<%= complaint.getComplaintId() %>, '<%= HtmlUtil.escapeJsString(complaint.getStatus()) %>', '<%= complaint.getRemarks() == null ? "" : HtmlUtil.escapeJsString(complaint.getRemarks()) %>')">Update</button>
                                     </td>
                                 </tr>
                             <% } %>
@@ -132,7 +133,7 @@ function closeUpdateForm() {
 </script>
 <div id="logoutModal" class="logout-modal-overlay" aria-hidden="true">
     <div class="logout-modal">
-        <div class="logout-modal-icon">↪</div>
+        <div class="logout-modal-icon">â†ª</div>
         <h2>Logout?</h2>
         <p>Are you sure you want to logout from your account?</p>
 
@@ -180,6 +181,8 @@ document.getElementById("logoutModal")?.addEventListener("click", function(event
 
 </body>
 </html>
+
+
 
 
 

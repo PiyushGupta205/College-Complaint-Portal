@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" trimDirectiveWhitespaces="true" %>
+<%@ page import="com.complaintportal.util.HtmlUtil" %>
 <%@ page import="java.util.List" %>
 <%@ page import="com.complaintportal.model.Complaint" %>
 <%@ page import="com.complaintportal.model.User" %>
@@ -98,15 +99,15 @@
                             <% for (Complaint complaint : complaints) { %>
                                 <tr>
                                     <td>#<%= complaint.getComplaintId() %></td>
-                                    <td><strong><%= complaint.getStudentName() %></strong><div style="color:#6b7280;font-size:11px;margin-top:2px;">Student ID: <%= complaint.getStudentId() %></div></td>
-                                    <td><strong><%= complaint.getTitle() %></strong><div style="color:#6b7280;font-size:12px;max-width:220px;margin-top:3px;"><%= complaint.getDescription() %></div></td>
-                                    <td><%= complaint.getCategoryName() %></td>
-                                    <td><%= complaint.getLocation() == null || complaint.getLocation().isEmpty() ? "&mdash;" : complaint.getLocation() %></td>
+                                    <td><strong><%= HtmlUtil.escapeHtml(complaint.getStudentName()) %></strong><div style="color:#6b7280;font-size:11px;margin-top:2px;">Student ID: <%= HtmlUtil.escapeHtml(String.valueOf(complaint.getStudentId())) %></div></td>
+                                    <td><strong><%= HtmlUtil.escapeHtml(complaint.getTitle()) %></strong><div style="color:#6b7280;font-size:12px;max-width:220px;margin-top:3px;"><%= HtmlUtil.escapeHtml(complaint.getDescription()) %></div></td>
+                                    <td><%= HtmlUtil.escapeHtml(complaint.getCategoryName()) %></td>
+                                    <td><%= complaint.getLocation() == null || complaint.getLocation().isEmpty() ? "&mdash;" : HtmlUtil.escapeHtml(complaint.getLocation()) %></td>
                                     <td>
                                         <% if (complaint.getFacultyName() == null) { %>
                                             <span style="color:#c2410c;font-size:12px;font-weight:700;">Not Assigned</span>
                                         <% } else { %>
-                                            <strong><%= complaint.getFacultyName() %></strong>
+                                            <strong><%= HtmlUtil.escapeHtml(complaint.getFacultyName()) %></strong>
                                         <% } %>
                                     </td>
                                     <td>
@@ -169,7 +170,7 @@ function closeAssignForm() {
 </script>
 <div id="logoutModal" class="logout-modal-overlay" aria-hidden="true">
     <div class="logout-modal">
-        <div class="logout-modal-icon">↪</div>
+        <div class="logout-modal-icon">â†ª</div>
         <h2>Logout?</h2>
         <p>Are you sure you want to logout from your account?</p>
 
@@ -217,6 +218,8 @@ document.getElementById("logoutModal")?.addEventListener("click", function(event
 
 </body>
 </html>
+
+
 
 
 
