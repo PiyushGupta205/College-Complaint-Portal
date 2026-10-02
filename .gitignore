@@ -23,3 +23,5 @@ java-compile-error.txt
 Thumbs.db
 WebContent/WEB-INF/classes/
 BEFORE_*/
+
+.env
