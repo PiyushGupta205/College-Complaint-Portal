@@ -29,6 +29,7 @@
             <a href="student-dashboard.jsp"><span class="nav-icon">&#8962;</span>Dashboard</a>
             <a href="submit-complaint.jsp"><span class="nav-icon">&#65291;</span>Submit Complaint</a>
             <a href="MyComplaintsServlet" class="active"><span class="nav-icon">&#9638;</span>My Complaints</a>
+            <a href="TrackComplaintServlet"><span class="nav-icon">&#10003;</span>Track Status</a>
         </nav>
         <div class="sidebar-section">Account</div>
         <nav class="sidebar-nav">
@@ -145,9 +146,3 @@ document.getElementById("logoutModal")?.addEventListener("click", function(event
 
 </body>
 </html>
-
-
-
-
-
-

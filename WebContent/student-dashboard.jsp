@@ -50,6 +50,10 @@
                 <span class="nav-icon">&#9638;</span>
                 My Complaints
             </a>
+            <a href="TrackComplaintServlet">
+                <span class="nav-icon">&#10003;</span>
+                Track Status
+            </a>
         </nav>
 
         <div class="sidebar-section">ACCOUNT</div>
@@ -139,7 +143,7 @@
                 </a>
 
 
-                <div class="student-action-card student-status-card">
+                <a href="TrackComplaintServlet" class="student-action-card student-status-card">
 
                     <div class="student-action-icon">&#10003;</div>
 
@@ -158,7 +162,9 @@
                         </div>
                     </div>
 
-                </div>
+                    <span class="student-action-arrow">&#8594;</span>
+
+                </a>
 
             </div>
 
@@ -251,10 +257,3 @@
     </script>
 </body>
 </html>
-
-
-
-
-
-
-
