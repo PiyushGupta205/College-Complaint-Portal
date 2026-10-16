@@ -41,7 +41,7 @@
             <div class="topbar-title"><h1>Assigned Complaints</h1><p>Complaints currently assigned to you</p></div>
             <div class="user-area">
                 <div class="user-avatar"><%= facultyName != null && !facultyName.isEmpty() ? facultyName.substring(0, 1).toUpperCase() : "F" %></div>
-                <div class="user-info"><strong><%= facultyName %></strong><span>Faculty</span></div>
+                <div class="user-info"><strong><%= HtmlUtil.escapeHtml(facultyName) %></strong><span>Faculty</span></div>
             </div>
         </header>
 
@@ -76,10 +76,10 @@
                                         <% } else if ("Resolved".equals(complaint.getStatus())) { %>
                                             <span class="status-badge status-resolved">Resolved</span>
                                         <% } else { %>
-                                            <span class="status-badge status-pending"><%= complaint.getStatus() %></span>
+                                            <span class="status-badge status-pending"><%= HtmlUtil.escapeHtml(complaint.getStatus()) %></span>
                                         <% } %>
                                     </td>
-                                    <td><%= complaint.getCreatedAt() == null ? "&mdash;" : complaint.getCreatedAt() %></td>
+                                    <td><%= complaint.getCreatedAt() == null ? "—" : HtmlUtil.escapeHtml(String.valueOf(complaint.getCreatedAt())) %></td>
                                     <td>
                                         <button type="button" class="btn btn-primary" onclick="openUpdateForm(<%= complaint.getComplaintId() %>, '<%= HtmlUtil.escapeJsString(complaint.getStatus()) %>', '<%= complaint.getRemarks() == null ? "" : HtmlUtil.escapeJsString(complaint.getRemarks()) %>')">Update</button>
                                     </td>
@@ -132,23 +132,16 @@ function closeUpdateForm() {
 }
 </script>
 <div id="logoutModal" class="logout-modal-overlay" aria-hidden="true">
-    <div class="logout-modal">
-        <div class="logout-modal-icon">â†ª</div>
-        <h2>Logout?</h2>
-        <p>Are you sure you want to logout from your account?</p>
-
+    <div class="logout-modal" role="dialog" aria-modal="true" aria-labelledby="logoutTitle">
+        <div class="logout-modal-icon">&#8618;</div>
+        <h3 id="logoutTitle">Are you sure you want to logout?</h3>
+        <p>You will need to login again to access your account.</p>
         <div class="logout-modal-actions">
-            <button type="button" class="logout-btn-cancel" onclick="closeLogoutModal()">
-                No, Stay
-            </button>
-
-            <a href="LogoutServlet" class="logout-btn-confirm">
-                Yes, Logout
-            </a>
+            <button type="button" class="logout-btn-cancel" onclick="closeLogoutModal()">No, Stay</button>
+            <a href="LogoutServlet" class="logout-btn-confirm">Yes, Logout</a>
         </div>
     </div>
 </div>
-
 <script>
 function openLogoutModal() {
     var modal = document.getElementById("logoutModal");
@@ -157,7 +150,6 @@ function openLogoutModal() {
         modal.setAttribute("aria-hidden", "false");
     }
 }
-
 function closeLogoutModal() {
     var modal = document.getElementById("logoutModal");
     if (modal) {
@@ -165,17 +157,11 @@ function closeLogoutModal() {
         modal.setAttribute("aria-hidden", "true");
     }
 }
-
 document.addEventListener("keydown", function(event) {
-    if (event.key === "Escape") {
-        closeLogoutModal();
-    }
+    if (event.key === "Escape") closeLogoutModal();
 });
-
 document.getElementById("logoutModal")?.addEventListener("click", function(event) {
-    if (event.target === this) {
-        closeLogoutModal();
-    }
+    if (event.target === this) closeLogoutModal();
 });
 </script>
 

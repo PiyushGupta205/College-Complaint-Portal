@@ -1,4 +1,4 @@
-﻿<%@ page contentType="text/html;charset=UTF-8" trimDirectiveWhitespaces="true" %>
+<%@ page contentType="text/html;charset=UTF-8" trimDirectiveWhitespaces="true" %>
 <%@ page import="java.util.List" %>
 <%@ page import="com.complaintportal.model.Complaint" %>
 <%
@@ -117,17 +117,16 @@
 </div>
 
 <div id="logoutModal" class="logout-modal-overlay" aria-hidden="true">
-    <div class="logout-modal">
-        <div class="logout-modal-icon">↪</div>
-        <h2>Logout?</h2>
-        <p>Are you sure you want to logout from your account?</p>
+    <div class="logout-modal" role="dialog" aria-modal="true" aria-labelledby="logoutTitle">
+        <div class="logout-modal-icon">&#8618;</div>
+        <h3 id="logoutTitle">Are you sure you want to logout?</h3>
+        <p>You will need to login again to access your account.</p>
         <div class="logout-modal-actions">
             <button type="button" class="logout-btn-cancel" onclick="closeLogoutModal()">No, Stay</button>
             <a href="LogoutServlet" class="logout-btn-confirm">Yes, Logout</a>
         </div>
     </div>
 </div>
-
 <script>
 function openLogoutModal() {
     var modal = document.getElementById("logoutModal");

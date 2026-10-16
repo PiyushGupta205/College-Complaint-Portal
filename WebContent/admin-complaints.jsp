@@ -34,6 +34,8 @@
         <nav class="sidebar-nav">
             <a href="admin-dashboard.jsp"><span class="nav-icon">&#8962;</span>Dashboard</a>
             <a href="AdminComplaintsServlet" class="active"><span class="nav-icon">&#9638;</span>All Complaints</a>
+<a href="AdminDirectoryServlet?type=students"><span class="nav-icon">&#9993;</span>Students</a>
+<a href="AdminDirectoryServlet?type=faculty"><span class="nav-icon">&#9733;</span>Faculty</a>
         </nav>
         <div class="sidebar-section">Account</div>
         <nav class="sidebar-nav">
@@ -169,23 +171,16 @@ function closeAssignForm() {
 }
 </script>
 <div id="logoutModal" class="logout-modal-overlay" aria-hidden="true">
-    <div class="logout-modal">
-        <div class="logout-modal-icon">â†ª</div>
-        <h2>Logout?</h2>
-        <p>Are you sure you want to logout from your account?</p>
-
+    <div class="logout-modal" role="dialog" aria-modal="true" aria-labelledby="logoutTitle">
+        <div class="logout-modal-icon">&#8618;</div>
+        <h3 id="logoutTitle">Are you sure you want to logout?</h3>
+        <p>You will need to login again to access your account.</p>
         <div class="logout-modal-actions">
-            <button type="button" class="logout-btn-cancel" onclick="closeLogoutModal()">
-                No, Stay
-            </button>
-
-            <a href="LogoutServlet" class="logout-btn-confirm">
-                Yes, Logout
-            </a>
+            <button type="button" class="logout-btn-cancel" onclick="closeLogoutModal()">No, Stay</button>
+            <a href="LogoutServlet" class="logout-btn-confirm">Yes, Logout</a>
         </div>
     </div>
 </div>
-
 <script>
 function openLogoutModal() {
     var modal = document.getElementById("logoutModal");
@@ -194,7 +189,6 @@ function openLogoutModal() {
         modal.setAttribute("aria-hidden", "false");
     }
 }
-
 function closeLogoutModal() {
     var modal = document.getElementById("logoutModal");
     if (modal) {
@@ -202,29 +196,13 @@ function closeLogoutModal() {
         modal.setAttribute("aria-hidden", "true");
     }
 }
-
 document.addEventListener("keydown", function(event) {
-    if (event.key === "Escape") {
-        closeLogoutModal();
-    }
+    if (event.key === "Escape") closeLogoutModal();
 });
-
 document.getElementById("logoutModal")?.addEventListener("click", function(event) {
-    if (event.target === this) {
-        closeLogoutModal();
-    }
+    if (event.target === this) closeLogoutModal();
 });
 </script>
 
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-

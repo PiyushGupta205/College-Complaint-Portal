@@ -160,4 +160,60 @@ public class UserDAO {
 
         return 0;
     }
-}
+
+    public List<User> getAllStudents() {
+        List<User> list = new ArrayList<>();
+        String sql = "SELECT student_id, name, email FROM students ORDER BY student_id ASC";
+
+        try (Connection con = DBConnection.getConnection();
+             PreparedStatement ps = con.prepareStatement(sql);
+             ResultSet rs = ps.executeQuery()) {
+            while (rs.next()) {
+                User user = new User();
+                user.setUserId(rs.getInt("student_id"));
+                user.setName(rs.getString("name"));
+                user.setEmail(rs.getString("email"));
+                user.setRole("student");
+                list.add(user);
+            }
+        } catch (SQLException e) {
+            System.err.println("Unable to load students: " + e.getMessage());
+        }
+        return list;
+    }
+
+    public List<User> getAllAdministrators() {
+        List<User> list = new ArrayList<>();
+        String sql = "SELECT admin_id, name, email FROM administrators ORDER BY name";
+
+        try (Connection con = DBConnection.getConnection();
+             PreparedStatement ps = con.prepareStatement(sql);
+             ResultSet rs = ps.executeQuery()) {
+            while (rs.next()) {
+                User user = new User();
+                user.setUserId(rs.getInt("admin_id"));
+                user.setName(rs.getString("name"));
+                user.setEmail(rs.getString("email"));
+                user.setRole("admin");
+                list.add(user);
+            }
+        } catch (SQLException e) {
+            System.err.println("Unable to load administrators: " + e.getMessage());
+        }
+        return list;
+    }
+
+    public int countAdministrators() {
+        String sql = "SELECT COUNT(*) FROM administrators";
+
+        try (Connection con = DBConnection.getConnection();
+             PreparedStatement ps = con.prepareStatement(sql);
+             ResultSet rs = ps.executeQuery()) {
+            if (rs.next()) {
+                return rs.getInt(1);
+            }
+        } catch (SQLException e) {
+            System.err.println("Unable to count administrators: " + e.getMessage());
+        }
+        return 0;
+    }}

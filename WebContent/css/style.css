@@ -308,6 +308,27 @@ h1, h2, h3, .stat-number, .auth-visual-content h2, .auth-card h2 {
 
 .logout-modal-overlay.show {
     display: flex;
+    animation: logoutOverlayFade .2s ease both;
+}
+
+.logout-modal-overlay.show .logout-modal {
+    animation: logoutModalPop .24s ease both;
+}
+
+@keyframes logoutOverlayFade {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+@keyframes logoutModalPop {
+    from {
+        opacity: 0;
+        transform: translateY(8px) scale(.97);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
 }
 
 /* =========================================================

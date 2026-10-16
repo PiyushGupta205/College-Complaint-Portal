@@ -248,39 +248,39 @@
 
 </div>
 
-    <div id="logoutModal" class="logout-modal-overlay">
-        <div class="logout-modal">
-            <div class="logout-modal-icon">!</div>
-            <h3>Logout</h3>
-            <p>Are you sure you want to logout?</p>
-
-            <div class="logout-modal-actions">
-                <button type="button" class="logout-btn-cancel" onclick="closeLogoutModal()">
-                    No
-                </button>
-
-                <a href="LogoutServlet" class="logout-btn-confirm">
-                    Yes, Logout
-                </a>
-            </div>
+    <div id="logoutModal" class="logout-modal-overlay" aria-hidden="true">
+    <div class="logout-modal" role="dialog" aria-modal="true" aria-labelledby="logoutTitle">
+        <div class="logout-modal-icon">&#8618;</div>
+        <h3 id="logoutTitle">Are you sure you want to logout?</h3>
+        <p>You will need to login again to access your account.</p>
+        <div class="logout-modal-actions">
+            <button type="button" class="logout-btn-cancel" onclick="closeLogoutModal()">No, Stay</button>
+            <a href="LogoutServlet" class="logout-btn-confirm">Yes, Logout</a>
         </div>
     </div>
-
-    <script>
-        function openLogoutModal() {
-            document.getElementById("logoutModal").style.display = "flex";
-        }
-
-        function closeLogoutModal() {
-            document.getElementById("logoutModal").style.display = "none";
-        }
-
-        document.getElementById("logoutModal").addEventListener("click", function(event) {
-            if (event.target === this) {
-                closeLogoutModal();
-            }
-        });
-    </script>
+</div>
+<script>
+function openLogoutModal() {
+    var modal = document.getElementById("logoutModal");
+    if (modal) {
+        modal.classList.add("show");
+        modal.setAttribute("aria-hidden", "false");
+    }
+}
+function closeLogoutModal() {
+    var modal = document.getElementById("logoutModal");
+    if (modal) {
+        modal.classList.remove("show");
+        modal.setAttribute("aria-hidden", "true");
+    }
+}
+document.addEventListener("keydown", function(event) {
+    if (event.key === "Escape") closeLogoutModal();
+});
+document.getElementById("logoutModal")?.addEventListener("click", function(event) {
+    if (event.target === this) closeLogoutModal();
+});
+</script>
 </body>
 </html>
 

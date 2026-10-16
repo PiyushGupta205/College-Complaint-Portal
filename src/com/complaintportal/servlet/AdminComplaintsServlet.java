@@ -79,12 +79,25 @@ public class AdminComplaintsServlet extends HttpServlet {
             status = "";
         }
 
+        String view = trim(request.getParameter("view"));
+
+        if ("resolved".equals(view)) {
+            status = "Resolved";
+        }
+
         List<Complaint> complaints =
             complaintDAO.getAllComplaints(
                 complaintId,
                 status,
                 category
             );
+
+        if ("resolved".equals(view)) {
+            request.setAttribute("complaints", complaints);
+            request.getRequestDispatcher("admin-resolved.jsp")
+                   .forward(request, response);
+            return;
+        }
 
         List<User> facultyList =
             userDAO.getAllFaculty();

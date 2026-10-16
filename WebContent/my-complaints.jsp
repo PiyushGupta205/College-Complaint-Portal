@@ -1,6 +1,7 @@
-<%@ page contentType="text/html;charset=UTF-8" trimDirectiveWhitespaces="true" %>
+﻿<%@ page contentType="text/html;charset=UTF-8" trimDirectiveWhitespaces="true" %>
 <%@ page import="java.util.List" %>
 <%@ page import="com.complaintportal.model.Complaint" %>
+<%@ page import="com.complaintportal.util.HtmlUtil" %>
 <%
     if (session.getAttribute("userId") == null || !"student".equals(session.getAttribute("role"))) {
         response.sendRedirect("login.jsp");
@@ -42,7 +43,7 @@
             <div class="topbar-title"><h1>My Complaints</h1><p>Track all complaints submitted by you</p></div>
             <div class="user-area">
                 <div class="user-avatar"><%= studentName != null && !studentName.isEmpty() ? studentName.substring(0, 1).toUpperCase() : "S" %></div>
-                <div class="user-info"><strong><%= studentName %></strong><span>Student</span></div>
+                <div class="user-info"><strong><%= HtmlUtil.escapeHtml(studentName) %></strong><span>Student</span></div>
             </div>
         </header>
 
@@ -69,10 +70,10 @@
                             <% for (Complaint complaint : complaints) { %>
                                 <tr>
                                     <td>#<%= complaint.getComplaintId() %></td>
-                                    <td><strong><%= complaint.getTitle() %></strong><div style="color:#6b7280;font-size:12px;margin-top:3px;"><%= complaint.getDescription() %></div></td>
-                                    <td><%= complaint.getCategoryName() %></td>
-                                    <td><%= complaint.getLocation() == null || complaint.getLocation().isEmpty() ? "&mdash;" : complaint.getLocation() %></td>
-                                    <td><%= complaint.getFacultyName() == null ? "Not Assigned" : complaint.getFacultyName() %></td>
+                                    <td><strong><%= HtmlUtil.escapeHtml(complaint.getTitle()) %></strong><div style="color:#6b7280;font-size:12px;margin-top:3px;"><%= HtmlUtil.escapeHtml(complaint.getDescription()) %></div></td>
+                                    <td><%= HtmlUtil.escapeHtml(complaint.getCategoryName()) %></td>
+                                    <td><%= complaint.getLocation() == null || complaint.getLocation().isEmpty() ? "â€”" : HtmlUtil.escapeHtml(complaint.getLocation()) %></td>
+                                    <td><%= complaint.getFacultyName() == null ? "Not Assigned" : HtmlUtil.escapeHtml(complaint.getFacultyName()) %></td>
                                     <td>
                                         <% if ("Pending".equals(complaint.getStatus())) { %>
                                             <span class="status-badge status-pending">Pending</span>
@@ -81,11 +82,11 @@
                                         <% } else if ("Resolved".equals(complaint.getStatus())) { %>
                                             <span class="status-badge status-resolved">Resolved</span>
                                         <% } else { %>
-                                            <span class="status-badge status-pending"><%= complaint.getStatus() %></span>
+                                            <span class="status-badge status-pending"><%= HtmlUtil.escapeHtml(complaint.getStatus()) %></span>
                                         <% } %>
                                     </td>
-                                    <td><%= complaint.getRemarks() == null || complaint.getRemarks().isEmpty() ? "No remarks yet" : complaint.getRemarks() %></td>
-                                    <td><%= complaint.getCreatedAt() == null ? "&mdash;" : complaint.getCreatedAt() %></td>
+                                    <td><%= complaint.getRemarks() == null || complaint.getRemarks().isEmpty() ? "No remarks yet" : HtmlUtil.escapeHtml(complaint.getRemarks()) %></td>
+                                    <td><%= complaint.getCreatedAt() == null ? "â€”" : HtmlUtil.escapeHtml(String.valueOf(complaint.getCreatedAt())) %></td>
                                 </tr>
                             <% } %>
                             </tbody>
@@ -97,23 +98,16 @@
     </main>
 </div>
 <div id="logoutModal" class="logout-modal-overlay" aria-hidden="true">
-    <div class="logout-modal">
-        <div class="logout-modal-icon">↪</div>
-        <h2>Logout?</h2>
-        <p>Are you sure you want to logout from your account?</p>
-
+    <div class="logout-modal" role="dialog" aria-modal="true" aria-labelledby="logoutTitle">
+        <div class="logout-modal-icon">&#8618;</div>
+        <h3 id="logoutTitle">Are you sure you want to logout?</h3>
+        <p>You will need to login again to access your account.</p>
         <div class="logout-modal-actions">
-            <button type="button" class="logout-btn-cancel" onclick="closeLogoutModal()">
-                No, Stay
-            </button>
-
-            <a href="LogoutServlet" class="logout-btn-confirm">
-                Yes, Logout
-            </a>
+            <button type="button" class="logout-btn-cancel" onclick="closeLogoutModal()">No, Stay</button>
+            <a href="LogoutServlet" class="logout-btn-confirm">Yes, Logout</a>
         </div>
     </div>
 </div>
-
 <script>
 function openLogoutModal() {
     var modal = document.getElementById("logoutModal");
@@ -122,7 +116,6 @@ function openLogoutModal() {
         modal.setAttribute("aria-hidden", "false");
     }
 }
-
 function closeLogoutModal() {
     var modal = document.getElementById("logoutModal");
     if (modal) {
@@ -130,17 +123,11 @@ function closeLogoutModal() {
         modal.setAttribute("aria-hidden", "true");
     }
 }
-
 document.addEventListener("keydown", function(event) {
-    if (event.key === "Escape") {
-        closeLogoutModal();
-    }
+    if (event.key === "Escape") closeLogoutModal();
 });
-
 document.getElementById("logoutModal")?.addEventListener("click", function(event) {
-    if (event.target === this) {
-        closeLogoutModal();
-    }
+    if (event.target === this) closeLogoutModal();
 });
 </script>
 

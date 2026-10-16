@@ -50,6 +50,10 @@
                 <span class="nav-icon">&#9638;</span>
                 My Complaints
             </a>
+<a href="TrackComplaintServlet">
+                <span class="nav-icon">&#10003;</span>
+                Track Status
+            </a>
 
         </nav>
 
@@ -249,23 +253,16 @@
 </div>
 
 <div id="logoutModal" class="logout-modal-overlay" aria-hidden="true">
-    <div class="logout-modal">
-        <div class="logout-modal-icon">↪</div>
-        <h2>Logout?</h2>
-        <p>Are you sure you want to logout from your account?</p>
-
+    <div class="logout-modal" role="dialog" aria-modal="true" aria-labelledby="logoutTitle">
+        <div class="logout-modal-icon">&#8618;</div>
+        <h3 id="logoutTitle">Are you sure you want to logout?</h3>
+        <p>You will need to login again to access your account.</p>
         <div class="logout-modal-actions">
-            <button type="button" class="logout-btn-cancel" onclick="closeLogoutModal()">
-                No, Stay
-            </button>
-
-            <a href="LogoutServlet" class="logout-btn-confirm">
-                Yes, Logout
-            </a>
+            <button type="button" class="logout-btn-cancel" onclick="closeLogoutModal()">No, Stay</button>
+            <a href="LogoutServlet" class="logout-btn-confirm">Yes, Logout</a>
         </div>
     </div>
 </div>
-
 <script>
 function openLogoutModal() {
     var modal = document.getElementById("logoutModal");
@@ -274,7 +271,6 @@ function openLogoutModal() {
         modal.setAttribute("aria-hidden", "false");
     }
 }
-
 function closeLogoutModal() {
     var modal = document.getElementById("logoutModal");
     if (modal) {
@@ -282,26 +278,13 @@ function closeLogoutModal() {
         modal.setAttribute("aria-hidden", "true");
     }
 }
-
 document.addEventListener("keydown", function(event) {
-    if (event.key === "Escape") {
-        closeLogoutModal();
-    }
+    if (event.key === "Escape") closeLogoutModal();
 });
-
 document.getElementById("logoutModal")?.addEventListener("click", function(event) {
-    if (event.target === this) {
-        closeLogoutModal();
-    }
+    if (event.target === this) closeLogoutModal();
 });
 </script>
 
 </body>
 </html>
-
-
-
-
-
-
-
