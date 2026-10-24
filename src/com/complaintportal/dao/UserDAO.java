@@ -104,7 +104,7 @@ public class UserDAO {
 
         String sql =
             "SELECT faculty_id, name, department " +
-            "FROM faculty ORDER BY name";
+            "FROM faculty ORDER BY faculty_id ASC";
 
         try (Connection con = DBConnection.getConnection();
              PreparedStatement ps = con.prepareStatement(sql);
@@ -216,4 +216,87 @@ public class UserDAO {
             System.err.println("Unable to count administrators: " + e.getMessage());
         }
         return 0;
-    }}
+    }
+    public boolean deleteStudent(int studentId) {
+        if (studentId <= 0) return false;
+
+        String snapshotSql =
+            "UPDATE complaints c JOIN students s ON c.student_id = s.student_id " +
+            "SET c.student_name_snapshot = COALESCE(c.student_name_snapshot, s.name), " +
+            "c.student_email_snapshot = COALESCE(c.student_email_snapshot, s.email) " +
+            "WHERE c.student_id = ?";
+        String deleteSql = "DELETE FROM students WHERE student_id = ?";
+
+        try (Connection con = DBConnection.getConnection()) {
+            con.setAutoCommit(false);
+            try {
+                try (PreparedStatement ps = con.prepareStatement(snapshotSql)) {
+                    ps.setInt(1, studentId);
+                    ps.executeUpdate();
+                }
+
+                int deleted;
+                try (PreparedStatement ps = con.prepareStatement(deleteSql)) {
+                    ps.setInt(1, studentId);
+                    deleted = ps.executeUpdate();
+                }
+
+                if (deleted != 1) {
+                    con.rollback();
+                    return false;
+                }
+
+                con.commit();
+                return true;
+            } catch (SQLException e) {
+                con.rollback();
+                throw e;
+            } finally {
+                con.setAutoCommit(true);
+            }
+        } catch (SQLException e) {
+            System.err.println("Unable to delete student: " + e.getMessage());
+            return false;
+        }
+    }
+
+    public boolean deleteFaculty(int facultyId) {
+        if (facultyId <= 0) return false;
+
+        String unassignSql =
+            "UPDATE complaints SET assigned_faculty_id = NULL WHERE assigned_faculty_id = ?";
+        String deleteSql = "DELETE FROM faculty WHERE faculty_id = ?";
+
+        try (Connection con = DBConnection.getConnection()) {
+            con.setAutoCommit(false);
+            try {
+                try (PreparedStatement ps = con.prepareStatement(unassignSql)) {
+                    ps.setInt(1, facultyId);
+                    ps.executeUpdate();
+                }
+
+                int deleted;
+                try (PreparedStatement ps = con.prepareStatement(deleteSql)) {
+                    ps.setInt(1, facultyId);
+                    deleted = ps.executeUpdate();
+                }
+
+                if (deleted != 1) {
+                    con.rollback();
+                    return false;
+                }
+
+                con.commit();
+                return true;
+            } catch (SQLException e) {
+                con.rollback();
+                throw e;
+            } finally {
+                con.setAutoCommit(true);
+            }
+        } catch (SQLException e) {
+            System.err.println("Unable to delete faculty: " + e.getMessage());
+            return false;
+        }
+    }
+}

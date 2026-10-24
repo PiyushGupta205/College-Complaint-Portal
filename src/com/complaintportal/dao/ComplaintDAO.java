@@ -34,12 +34,14 @@ public class ComplaintDAO {
     }
 
     private String complaintSelect() {
-        return "SELECT c.complaint_id, c.student_id, s.name AS student_name, " +
+        return "SELECT c.complaint_id, c.student_id, " +
+               "COALESCE(s.name, c.student_name_snapshot, 'Deleted Student') AS student_name, " +
+               "COALESCE(s.email, c.student_email_snapshot) AS student_email, " +
                "c.category_id, cc.category_name, c.assigned_faculty_id, " +
                "f.name AS faculty_name, c.title, c.location, c.description, " +
                "c.remarks, c.status, c.created_at, c.updated_at " +
                "FROM complaints c " +
-               "JOIN students s ON c.student_id = s.student_id " +
+               "LEFT JOIN students s ON c.student_id = s.student_id " +
                "JOIN complaint_category cc ON c.category_id = cc.category_id " +
                "LEFT JOIN faculty f ON c.assigned_faculty_id = f.faculty_id ";
     }
@@ -140,8 +142,8 @@ public class ComplaintDAO {
             String location, String description) {
 
         String sql = "INSERT INTO complaints " +
-                     "(student_id, category_id, title, location, description) " +
-                     "VALUES (?, ?, ?, ?, ?)";
+                     "(student_id, category_id, title, location, description, student_name_snapshot, student_email_snapshot) " +
+                     "SELECT ?, ?, ?, ?, ?, name, email FROM students WHERE student_id = ?";
 
         try (Connection con = DBConnection.getConnection();
              PreparedStatement ps = con.prepareStatement(sql)) {
@@ -150,6 +152,7 @@ public class ComplaintDAO {
             ps.setString(3, title);
             ps.setString(4, location);
             ps.setString(5, description);
+            ps.setInt(6, studentId);
             return ps.executeUpdate() > 0;
         } catch (SQLException e) {
             System.err.println("Unable to submit complaint: " + e.getMessage());
@@ -215,5 +218,19 @@ public class ComplaintDAO {
         }
 
         return stats;
+    }
+
+    public boolean deleteComplaint(int complaintId) {
+        if (complaintId <= 0) return false;
+
+        String sql = "DELETE FROM complaints WHERE complaint_id = ?";
+        try (Connection con = DBConnection.getConnection();
+             PreparedStatement ps = con.prepareStatement(sql)) {
+            ps.setInt(1, complaintId);
+            return ps.executeUpdate() == 1;
+        } catch (SQLException e) {
+            System.err.println("Unable to delete complaint: " + e.getMessage());
+            return false;
+        }
     }
 }
